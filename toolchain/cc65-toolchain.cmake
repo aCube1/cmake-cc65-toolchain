@@ -62,10 +62,14 @@ macro(_compiler_cc65 lang)
 
 	set(CMAKE_${lang}_DEFINE_FLAG "-D ")
 	set(CMAKE_${lang}_VERBOSE_FLAG "-v" )
-	set(CMAKE_${lang}_FLAGS_DEBUG_INIT "-g -D_DEBUG=1")
 	set(CMAKE_DEPFILE_FLAGS_${lang} "--create-dep <DEP_FILE>")
 	set(CMAKE_INCLUDE_FLAG_${lang} "-I ")
 	set(CMAKE_${lang}_LINK_LIBRARY_FLAG "")
+
+	set(CMAKE_${lang}_FLAGS_DEBUG_INIT  "-g -D_DEBUG")
+	set(CMAKE_${lang}_FLAGS_RELEASE_INIT "-Oirs -DNDEBUG")
+	set(CMAKE_${lang}_FLAGS_RELWITHDEBINFO_INIT "-g -DNDEBUG")
+	set(CMAKE_${lang}_FLAGS_MINSIZEREL_INIT "-Oirs -DNDEBUG")
 endmacro()
 
 _compiler_cc65(C)
